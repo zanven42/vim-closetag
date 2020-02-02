@@ -9,10 +9,6 @@ For example, below is the current content:
 
 Now you press <kbd>&gt;</kbd>, the content will be:
 
-    <table>|</table>
-
-And now if you press <kbd>&gt;</kbd> again, the content will be:
-
     <table>
         |
     </table>
@@ -65,6 +61,7 @@ Set in your vimrc:
     " Disables auto-close if not in a "valid" region (based on filetype)
     "
     let g:closetag_regions = {
+        \ 'typescriptreact': 'jsxRegion,tsxRegion',
         \ 'typescript.tsx': 'jsxRegion,tsxRegion',
         \ 'javascript.jsx': 'jsxRegion',
         \ }
