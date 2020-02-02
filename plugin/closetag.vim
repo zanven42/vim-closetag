@@ -21,6 +21,7 @@ fun! s:Initial()
     call s:Declare('g:closetag_emptyTags_caseSensitive', 0)
 
     call s:Declare('g:closetag_regions', {
+        \ 'typescriptreact': 'jsxRegion,tsxRegion',
         \ 'typescript.tsx': 'jsxRegion,tsxRegion',
         \ 'javascript.jsx': 'jsxRegion',
         \ })
@@ -256,11 +257,7 @@ fun! s:CloseIt()
                     if l:line > 0 && l:line != line('.')
                         exe "normal! " . l:line . "gg"
                     en
-                    if exists('b:did_indent') && b:did_indent == 1
-                        exe "normal! 2f>a\<Cr>\<Esc>k$i\<Cr>\<Esc>$"
-                    else
-                        exe "normal! 2f>a\<Cr>\<Esc>k$i\<Cr>\<Esc>>>$"
-                    en
+                    exe "normal! 2f>a\<Cr>\<Esc>k$i\<Cr>\<Esc>>>$"
                     call setline('.', strpart(getline('.'), 0, strlen(getline('.'))-1))
 
                     if col('.') >= col('$') | start | el | start! | en
